@@ -5,34 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/count_down_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00"
         android:textSize="50sp"
-        app:layout_constraintTop_toTopOf="@id/count_down_progress"
         app:layout_constraintBaseline_toBaselineOf="@id/count_down_progress"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/count_down_progress" />
+
     <TextView
+        android:id="@+id/time_desc_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:text="초"
         android:textSize="20sp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@id/count_down_number"
-        app:layout_constraintBottom_toTopOf="@id/count_down_progress"/>
+        app:layout_constraintBottom_toTopOf="@id/count_down_progress"
+        app:layout_constraintStart_toEndOf="@id/count_down_number" />
+
     <ProgressBar
         android:id="@+id/count_down_progress"
         style="@style/Widget.Material3.LinearProgressIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/time"
@@ -40,22 +44,22 @@
         android:layout_height="wrap_content"
         android:text="00:00"
         android:textSize="120sp"
-        app:layout_constraintVertical_bias="0.35"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
 
     <TextView
         android:id="@+id/time_tick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="0"
         android:textSize="30sp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintVertical_bias="0.35"
         app:layout_constraintBaseline_toBaselineOf="@id/time"
-        app:layout_constraintStart_toEndOf="@id/time"/>
+        app:layout_constraintStart_toEndOf="@id/time"
+        app:layout_constraintVertical_bias="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -68,46 +72,47 @@
         android:id="@+id/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginEnd="50dp"
         app:srcCompat="@drawable/ic_baseline_play_circle_24" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pause_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
         android:clickable="true"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginEnd="50dp"
-        android:visibility="gone"
         app:srcCompat="@drawable/ic_baseline_pause_circle_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/stop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginStart="50dp"
         app:srcCompat="@drawable/ic_baseline_stop_circle_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/check_button"
+        android:id="@+id/lap_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:clickable="true"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:layout_marginStart="50dp"
-        app:srcCompat="@drawable/ic_baseline_check_circle_24"
-        android:visibility="gone"/>
+        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -123,4 +128,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical" />
     </ScrollView>
+
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/count_down_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="count_down_number" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
