@@ -7,8 +7,11 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore.Images
 import android.provider.Settings
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -32,10 +35,40 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.toolbar.apply {
+            title="My Gallery"
+            setSupportActionBar(this)
+        }
+
+
+
         binding.imageButton.setOnClickListener{
             checkPermission()
         }
+        binding.navigateToDetailButton.setOnClickListener {
+            navigateToFrameActivity()
+        }
+
         initRecyclerView()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("MainActivityLog", "onOptionItemSelected")
+
+        return when(item.itemId){
+            R.id.action_add->{
+                checkPermission()
+                true
+            }
+            else->{
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
     fun initRecyclerView(){
         imageAdapter= ImageAdapter(object:ImageAdapter.ItemClickListener{
@@ -103,6 +136,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun navigateToFrameActivity(){
+        val images=imageAdapter.currentList.filterIsInstance<ImageItems.Image>().map{
+            it.uri.toString()
+        }.toTypedArray()
+        val intent=Intent(this,FrameActivity::class.java)
+            .putExtra("images",images)
+
+        startActivity(intent)
+    }
+
     private fun openAppSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         val uri = Uri.fromParts("package", packageName, null)
@@ -123,7 +166,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showPermissionRequestDialog(){
         Log.d("PermissionFlow","showPermissionRequest")
-ss
         ActivityCompat.requestPermissions(this,arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES), READ_EXTERNAL_IMAGE)
     }
     private fun loadImage(){
