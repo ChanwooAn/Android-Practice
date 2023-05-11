@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AssignmentApplication</string>
+    <string name="search_bar_text">검색할 내용을 입력하세요.</string>
+    <string name="title_main_activity">내가 저장한 사진</string>
+
+</resources>
