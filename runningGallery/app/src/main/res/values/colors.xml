@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#25A855</color>
+    <color name="main_color_variant">#000000</color>
+    <color name="text_color">#191919</color>
+    <color name="snack_bar_color">#FBFEFB</color>
+
+
+    <color name="nav_btn_clicked">#25A855</color>
+    <color name="nav_btn_color">#000000</color>
+    <color name="nav_bar_top_line">#707070</color>
+
+    <color name="crew_running_btn">#1B6436</color>
+    <color name="white">#FBF5F5</color>
+    <color name="black">#090909</color>
+    <color name="stop_button_progress_color">#1B6436</color>
+
+    <color name="notification_crew_icon_color">#707070</color>
+    <color name="notification_crew_item_under_line">#EBEBEB</color>
+    <color name="notification_my_running_background">#F3F3F3</color>
+    <color name="notification_my_running_item_background">#FBFEFB</color>
+    <color name="notification_my_running_item_running_possible">#25A855</color>
+    <color name="notification_my_running_item_running_impossible">#A12830</color>
+    <color name="notification_my_running_item_dot_line_color">#707070</color>
+    <color name="time_alert_snack_bar_background">#54090909</color>
+
+
+
+    <color name="transparent">#00ffffff</color>
+    <color name="tmp"> #fffbceb1</color>
+    <color name="outline">#05000029</color>
+    <color name="calendar_sunday">#6D6768</color>
+</resources>
